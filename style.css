@@ -1,0 +1,54 @@
+body
+{
+	font-family: Ariel, sans-serif;
+}
+
+th, td
+{
+	padding: 5px 10px;
+}
+
+.dark
+{
+	background-color: #93add8;
+}
+
+.light
+{
+	background-color: #bcc7d8;
+}
+
+.nav-item
+{
+	display: inline-block;
+	float: right;
+	font-size: 1.5rem;
+	text-align: center;
+	width: 20%;
+}
+
+.table
+{
+}
+
+#heading
+{
+	float: left;
+	width: auto;
+}
+
+#nav
+{
+	background-color: blue;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 2rem;
+	width: 100%;
+}
+
+#to-do-list
+{
+	border: 1px solid black;
+	margin-top: 5rem;
+}
