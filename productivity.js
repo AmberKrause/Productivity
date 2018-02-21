@@ -1,10 +1,11 @@
 window.onload = function()
 {
 	var add = document.getElementById("add-button");
-	add.onclick = addExpand;
+	add.onclick = open;
 }
 
-function addExpand()
+function open()
 {
-	this.
+	var par = this.parentElement;
+	par.innerHTML = par.innerHTML;
 }

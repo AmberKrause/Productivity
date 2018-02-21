@@ -12,35 +12,44 @@
 		<div class="nav-item">Images</div>
 		<div class="nav-item">To-Do List</div>
 	</div>
-	<table id="to-do-list">
-		<tr>
-			<th class="dark">Category</th>
-			<th class="light">Task</th>
-			<th class="dark">Deadline</th>
-			<th class="light">Complete</th>
-		</tr>
-		<tr>
-					<td class="dark">
-						<select>
-							<option value="homework">Homework</option>
-							<option value="work">Work</option>
-							<option value="personal">Personal</option>
-							<option value="social">Social</option>
-						</select>
-					</td>
-					<td class="light">Task example</td>
-					<td class="dark">
-						<time datetime="1914-12-20 08:00"></time>
-					</td>
-					<td class="light" style="text-align: center;">
-						<input type="checkbox">
-					</td>
-		</tr>
-		<tr>
-			<td class="dark"><button id="add-button" type="button">+</button></td>
-			<td class="light"></td>
-			<td class="dark"></td>
-			<td class="light"></td>
-		</tr>
-	</table>
+	<div id="container">
+		<table id="to-do-list">
+			<tr>
+				<th class="dark small-col">Category</th>
+				<th class="light large-col">Task</th>
+				<th class="dark small-col">Deadline</th>
+				<th class="light small-col">Complete</th>
+			</tr>
+			<tr>
+				<td class="dark">
+					<select>
+						<option value="homework">Homework</option>
+						<option value="work">Work</option>
+						<option value="personal">Personal</option>
+						<option value="social">Social</option>
+					</select>
+				</td>
+				<td class="light">Task example</td>
+				<td class="dark">
+					<time datetime="1914-12-20 08:00"></time>
+				</td>
+				<td class="light" style="text-align: center;">
+					<input type="checkbox">
+				</td>
+			</tr>
+			<tr>
+				<td class="dark">
+					<div id="input-form">
+						<div>Task:</div>
+						<textarea class="task-input" rows="4" cols="50" maxlength="300"></textarea>
+						<div>Deadline:</div>
+						<input type="date"></input>
+					</div>
+					<button id="add-button" type="button">+</button></td>
+				<td class="light"></td>
+				<td class="dark"></td>
+				<td class="light"></td>
+			</tr>
+		</table>
+	</container>
 </body>

@@ -13,6 +13,12 @@ th, td
 	background-color: #93add8;
 }
 
+.large-col
+{
+	width: 300px;
+	min-width: 200px;
+}
+
 .light
 {
 	background-color: #bcc7d8;
@@ -27,14 +33,42 @@ th, td
 	width: 20%;
 }
 
+.small-col
+{
+	width: 100px;
+	min-width: 100px;
+}
+
 .table
 {
+	margin: 0;
+}
+
+.task-input
+{
+	height: 4rem;
+	margin-bottom: 1rem;
+	width: 20rem;
+}
+
+#container
+{
+	width: 100%;
 }
 
 #heading
 {
 	float: left;
 	width: auto;
+}
+
+#input-form
+{
+	background-color: white;
+	border: 1px solid black;
+	padding: 1rem;
+	position: fixed;
+	z-index: 10;
 }
 
 #nav
