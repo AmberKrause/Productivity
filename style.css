@@ -18,6 +18,10 @@ th, td
 	
 }
 
+.grid-img
+{
+}
+
 .large-col
 {
 	width: 300px;
@@ -86,7 +90,7 @@ th, td
 	width: 100%;
 }
 
-#to-do-list
+#to-do-list, #gallery-table
 {
 	border: 1px solid black;
 	margin-top: 5rem;
