@@ -3,13 +3,13 @@ body
 	font-family: Ariel, sans-serif;
 }
 
+table
+{
+}
+
 th
 {
 	padding: 5px 10px;
-}
-
-table
-{
 }
 
 .dark
@@ -45,11 +45,18 @@ table
 
 .nav-item
 {
+	color: white;
 	display: inline-block;
 	float: right;
 	font-size: 1.5rem;
 	text-align: center;
+	text-decoration: none;
 	width: 20%;
+}
+
+.nav-item:hover
+{
+	color: #dee1e5;
 }
 
 .small-col
@@ -72,6 +79,7 @@ table
 
 .thumbnail
 {
+	color: white;
 	position: absolute;
 	z-index: 30;
 }
@@ -96,8 +104,19 @@ table
 #center-img
 {
 	border: 5px solid white;
+	clear: both;
 	height: 426px;
 	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#close
+{
+	color: gray;
+	float: right;
+	font-size: 3rem;
+	margin-right: .4rem;
 }
 
 #container
@@ -150,6 +169,12 @@ table
 	height: 2rem;
 	width: 100%;
 	z-index: 50;
+}
+
+#slideshow-table
+{
+	position: fixed;
+	bottom: 0;
 }
 
 #to-do-list, #gallery-table

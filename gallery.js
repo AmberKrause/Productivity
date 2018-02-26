@@ -1,5 +1,6 @@
 window.onload = function()
 {
+	var close = document.getElementById("close");
 	var thumnails = document.getElementsByClassName("thumbnail");
 	for(i = 0; i < thumnails.length; i++)
 	{
@@ -8,6 +9,7 @@ window.onload = function()
 			openLightbox(i);
 		}
 	}
+	close.onclick = closeLightbox;
 }
 
 function openLightbox(imgNum)
