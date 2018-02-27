@@ -12,6 +12,11 @@ th
 	padding: 5px 10px;
 }
 
+.center-content
+{
+	text-align: center;
+}
+
 .dark
 {
 	background-color: #93add8;
@@ -86,10 +91,10 @@ th
 
 .thumbnail:hover
 {
-	top: -10px;
-	left: -20px;
-	width: 200px;
-	height: 140px;
+	top: -30px;
+	left: -45px;
+	width: 270px;
+	height: 180px;
 	display: block;
 }
 
@@ -97,7 +102,7 @@ th
 {
 	position: relative;
 	height: 120px;
-	width: 160px;
+	width: 180px;
 	overflow: hidden;
 }
 
@@ -105,8 +110,8 @@ th
 {
 	border: 5px solid white;
 	clear: both;
-	height: 426px;
-	width: 640px;
+	height: 680px;
+	width: 1020px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -141,6 +146,7 @@ th
 {
 	background-color: white;
 	border: 1px solid black;
+	display: none;
 	padding: 1rem;
 	position: fixed;
 	z-index: 10;

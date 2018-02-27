@@ -12,6 +12,14 @@ window.onload = function()
 	close.onclick = closeLightbox;
 }
 
+function closeLightbox()
+{
+	var lightbox = document.getElementById("lightbox");
+	lightbox.style.display = "none";
+	lightbox.style.zIndex = "-100";
+	console.log("closed lightbox");
+}
+
 function openLightbox(imgNum)
 {
 	var container = document.getElementById("container");
@@ -21,10 +29,3 @@ function openLightbox(imgNum)
 	console.log("opened lightbox");
 }
 
-function closeLightbox()
-{
-	var lightbox = document.getElementById("lightbox");
-	lightbox.style.display = "none";
-	lightbox.style.zIndex = "-100";
-	console.log("closed lightbox");
-}
