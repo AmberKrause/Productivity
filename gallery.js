@@ -6,10 +6,10 @@ window.onload = function()
 	var thumbnails = document.getElementsByClassName("thumbnail");
 	for(i = 0; i < thumbnails.length; i++)
 	{
-		thumbnails[i].onclick = function()
+		thumbnails[i].onclick = (function(i)
 		{
-			openLightbox(5);
-		}
+			openLightbox(i);
+		})(i);
 	}
 	close.onclick = closeLightbox;
 	left.onclick = slideLeft;

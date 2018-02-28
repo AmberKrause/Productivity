@@ -161,7 +161,13 @@ th
 #heading
 {
 	float: left;
+	margin-left: 2rem;
 	width: auto;
+}
+
+#heading:hover
+{
+	color: white;    
 }
 
 #input-form
@@ -199,7 +205,7 @@ th
 
 #nav
 {
-	background-color: blue;
+	background-color: #526b93;
 	position: fixed;
 	left: 0;
 	top: 0;
