@@ -13,10 +13,6 @@
 		<a href="index.html" class="nav-item">To-Do List</a>
 	</div>
 	<div id="container">
-		<div>
-			<button id="reset" type="button">Reset List</button>
-			<button id="new-cat" type="button">New Category</button>
-		</div>
 		<table id="to-do-list">
 			<tr id="head-row">
 				<th class="small-col sortable">Category</th>
@@ -27,6 +23,7 @@
 				<th class="small-col"></th>
 			</tr>
 			<tr>
+				<td class="data-cell"></td>
 				<td class="data-cell">
 					<div id="input-form">
 						<div>Task:</div>
@@ -40,9 +37,21 @@
 				<td class="data-cell"></td>
 				<td class="data-cell"></td>
 				<td class="data-cell"></td>
-				<td class="data-cell"></td>
 			</tr>
 		</table>
+		<div id="cat-form">
+			<div class="form-elem">
+				<div>Category:</div>
+				<textarea id="cat-field" maxlength="10"></textarea>
+			</div>
+			<div class="form-elem">
+				<div>Color:</div>
+				<input id="color-field" type="color"></input>
+			</div>
+			<div class="form-elem">
+				<button id="submit-cat" type="button">New</button>
+			</div>
+		</div>
 	</div>
 	<select id="select-template"><option value='Homework'>Homework</option><option value='Work'>Work</option><option value='Personal'>Personal</option><option value='Social'>Social</option></select>
 </body>

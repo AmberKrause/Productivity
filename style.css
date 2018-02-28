@@ -3,6 +3,12 @@ body
 	font-family: Ariel, sans-serif;
 }
 
+button, select
+{
+	border: 2px solid #526b93;
+	border-radius: 4px;
+}
+
 table
 {
 }
@@ -26,6 +32,12 @@ th
 .datetime
 {
 	
+}
+
+.form-elem
+{
+	float: left;
+	margin-right: 1rem;
 }
 
 .large-col
@@ -60,7 +72,10 @@ th
 
 .slide
 {
-	display: none;
+	position: absolute;
+	opacity: 0;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
 }
 
 .small-col
@@ -91,17 +106,15 @@ th
 .thumbnail
 {
 	color: white;
+	display: block;
 	position: absolute;
 	z-index: 30;
 }
 
 .thumbnail:hover
 {
-	top: -30px;
-	left: -45px;
-	width: 270px;
-	height: 180px;
-	display: block;
+	transition: transform .3s;
+	transform: scale(1.5);
 }
 
 .thumbnail-container
@@ -112,6 +125,19 @@ th
 	overflow: hidden;
 }
 
+.thumbnail-container-slide
+{
+	border: 3px solid white;
+	position: relative;
+	height: 120px;
+	width: 180px;
+}
+
+.thumbnail-container-slide:hover
+{
+	border: 3px solid black;
+}
+
 .thumbnail-slide
 {
 	color: white;
@@ -119,6 +145,16 @@ th
 
 .thumbnail-slide:hover
 {
+}
+
+#add-button
+{
+	width: 100%;
+}
+
+#cat-form
+{
+	padding: 1rem;
 }
 
 #center-img
@@ -137,6 +173,8 @@ th
 	float: right;
 	font-size: 3rem;
 	margin-right: .4rem;
+	cursor: pointer;
+	cursor: hand;
 }
 
 #container
@@ -187,13 +225,17 @@ th
 	left: 1rem;
 	position: absolute;
 	top: 40%;
+	cursor: pointer;
+	cursor: hand;
+	z-index: 110;
 }
 
 #lightbox
 {
 	background-color: black;
 	position: fixed;
-	display: none;
+	opacity: 0;
+	visibility: hidden;
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -201,6 +243,7 @@ th
 	right: 0;
 	bottom: 0;
 	z-index: -100;
+	transition: visibility 0s, opacity 0.3s linear;
 }
 
 #nav
@@ -214,6 +257,16 @@ th
 	z-index: 50;
 }
 
+#play
+{
+	color: gray;
+	font-size: 2rem;
+	margin-left: .4rem;
+	margin-top: .4rem;
+	cursor: pointer;
+	cursor: hand;
+}
+
 #right
 {
 	color: gray;
@@ -221,6 +274,9 @@ th
 	right: 1rem;
 	position: absolute;
 	top: 40%;
+	cursor: pointer;
+	cursor: hand;
+	z-index: 110;
 }
 
 #select-template
@@ -230,12 +286,32 @@ th
 
 #slideshow-table
 {
+	background-color: white;
+	position: absolute;
+	bottom: 0;
+	-webkit-transition: all ease 0.3s;
+}
+
+#submit-cat
+{
+	margin-top: 50%;
+}
+
+#thumb-container
+{
 	position: fixed;
 	bottom: 0;
+	left: 50%;
+	margin-left: -95px;
 }
 
 #to-do-list, #gallery-table
 {
 	border: 1px solid black;
 	margin-top: 1rem;
+}
+
+#close:hover, #left:hover, #right:hover, #play:hover
+{
+	color: white;
 }

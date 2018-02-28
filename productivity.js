@@ -1,13 +1,13 @@
 window.onload = function()
 {
 	var table = document.getElementById("to-do-list");
-	if(localStorage.tasks)
+	/*if(localStorage.tasks)
 	{
 		table.innerHTML = localStorage.getItem("tasks");
-	}
+	}*/
 	
 	
-	var catButton = document.getElementById("new-cat");
+	var catButton = document.getElementById("submit-cat");
 	var headers = document.getElementById("head-row").getElementsByTagName("TH");
 	var plus = document.getElementById("add-button");
 	var submitTask = document.getElementById("submit-task");
@@ -35,20 +35,25 @@ var catColors = [
 
 function addCat()
 {
-	var cat = window.prompt("Enter a new category:");
+	var catInput = document.getElementById("cat-field");
+	var colorInput = document.getElementById("color-field");
 	var colorObj;
-	var newColor;
-	while(cat.length < 2 && cat != null)
+	var newCat = catInput.value;
+	var newColor = colorInput.value;
+	if(newCat.length < 2)
 	{
-		cat = window.prompt("Category must be at least two characters.\nEnter a new category:");
+		window.alert("Category must be at least two characters.");
 	}
-	newColor = window.prompt("Enter a color:");
-	cat = cat.toLowerCase();
-	cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
-	colorObj = { category: cat, color: newColor };
-	catColors.push(colorObj);
-	updateSelects(cat);
-	updateStorage();
+	else
+	{
+		newCat = newCat.toLowerCase();
+		newCat = newCat.substring(0, 1).toUpperCase() + newCat.substring(1);
+		colorObj = { category: newCat, color: newColor };
+		catColors.push(colorObj);
+		catInput.value = null;
+		updateSelects(newCat);
+		//updateStorage();
+	}
 }
 
 function addTask()
@@ -109,7 +114,7 @@ function addTask()
 		deleteButton = deleteCell.childNodes[0];
 		deleteButton.addEventListener("click", deleteTask, false);
 		closeForm();
-		updateStorage();
+		//updateStorage();
 	}
 }
 	
@@ -127,7 +132,7 @@ function deleteTask(event)
 	{
 		row.parentNode.removeChild(row);
 	}
-	updateStorage();
+	//updateStorage();
 }
 
 function getCatHTML()
@@ -202,7 +207,7 @@ function updateCatColor(event)
 	{
 		cells[i].style.backgroundColor = color;
 	}
-	updateStorage();
+	//updateStorage();
 }
 
 function updateSelects(newCat)
