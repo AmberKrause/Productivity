@@ -17,9 +17,9 @@ th
 	text-align: center;
 }
 
-.dark
+.data-cell
 {
-	background-color: #93add8;
+	background-color: #7fcdf9;
 	padding: 5px 10px;
 }
 
@@ -32,12 +32,6 @@ th
 {
 	width: 300px;
 	min-width: 200px;
-}
-
-.light
-{
-	background-color: #bcc7d8;
-	padding: 5px 10px;
 }
 
 .mag
@@ -64,10 +58,22 @@ th
 	color: #dee1e5;
 }
 
+.slide
+{
+	display: none;
+}
+
 .small-col
 {
 	width: 100px;
 	min-width: 100px;
+}
+
+.sortable:hover
+{
+	color: #dee1e5;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .table
@@ -106,12 +112,21 @@ th
 	overflow: hidden;
 }
 
+.thumbnail-slide
+{
+	color: white;
+}
+
+.thumbnail-slide:hover
+{
+}
+
 #center-img
 {
 	border: 5px solid white;
 	clear: both;
-	height: 680px;
-	width: 1020px;
+	height: 427px;
+	width: 640px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -126,6 +141,7 @@ th
 
 #container
 {
+	margin-top: 3rem;
 	width: 100%;
 }
 
@@ -134,6 +150,12 @@ th
 	background-color: black;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#head-row
+{
+	background-color: #93add8;
+	padding: 5px 10px;
 }
 
 #heading
@@ -150,6 +172,15 @@ th
 	padding: 1rem;
 	position: fixed;
 	z-index: 10;
+}
+
+#left
+{
+	color: gray;
+	font-size: 3rem;
+	left: 1rem;
+	position: absolute;
+	top: 40%;
 }
 
 #lightbox
@@ -177,6 +208,20 @@ th
 	z-index: 50;
 }
 
+#right
+{
+	color: gray;
+	font-size: 3rem;
+	right: 1rem;
+	position: absolute;
+	top: 40%;
+}
+
+#select-template
+{
+	display: none;
+}
+
 #slideshow-table
 {
 	position: fixed;
@@ -186,5 +231,5 @@ th
 #to-do-list, #gallery-table
 {
 	border: 1px solid black;
-	margin-top: 3rem;
+	margin-top: 1rem;
 }
