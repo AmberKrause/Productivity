@@ -1,5 +1,12 @@
 window.onload = function()
 {
+	var table = document.getElementById("to-do-list");
+	if(localStorage.tasks)
+	{
+		table.innerHTML = localStorage.getItem("tasks");
+	}
+	
+	
 	var catButton = document.getElementById("new-cat");
 	var headers = document.getElementById("head-row").getElementsByTagName("TH");
 	var plus = document.getElementById("add-button");
@@ -19,16 +26,29 @@ window.onload = function()
 	catButton.onclick = addCat;
 }
 
+var catColors = [
+	{ category: "Homework", color: "#7fcdf9" },
+	{ category: "Work", color: "#c07ff9" },
+	{ category: "Personal", color: "#a1f97f" },
+	{ category: "Social", color: "#f97f7f" },
+];
+
 function addCat()
 {
 	var cat = window.prompt("Enter a new category:");
+	var colorObj;
+	var newColor;
 	while(cat.length < 2 && cat != null)
 	{
 		cat = window.prompt("Category must be at least two characters.\nEnter a new category:");
 	}
+	newColor = window.prompt("Enter a color:");
 	cat = cat.toLowerCase();
 	cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
+	colorObj = { category: cat, color: newColor };
+	catColors.push(colorObj);
 	updateSelects(cat);
+	updateStorage();
 }
 
 function addTask()
@@ -54,10 +74,12 @@ function addTask()
 		var now = new Date();
 		var month;
 		var day;
+		var deleteButton;
 		
 		row.classList.add("data-row");
 		
 		cat.innerHTML = getCatHTML();
+		cat.childNodes[0].addEventListener("change", updateCatColor, false);
 		cat.classList.add("data-cell");
 		
 		task.innerHTML = taskField.value;
@@ -84,8 +106,10 @@ function addTask()
 		deleteCell.innerHTML = "<button type='button'>Delete</button>";
 		deleteCell.classList.add("data-cell");
 		deleteCell.classList.add("center-content");
-		
+		deleteButton = deleteCell.childNodes[0];
+		deleteButton.addEventListener("click", deleteTask, false);
 		closeForm();
+		updateStorage();
 	}
 }
 	
@@ -95,9 +119,31 @@ function closeForm()
 	inputForm.style.display = "none";
 }
 
+function deleteTask(event)
+{
+	var confirm = window.prompt("Enter 'Yes' to confirm task removal", "Yes");
+	var row = event.target.parentNode.parentNode;
+	if(confirm == "Yes")
+	{
+		row.parentNode.removeChild(row);
+	}
+	updateStorage();
+}
+
 function getCatHTML()
 {
 	return "<select>" + document.getElementById("select-template").innerHTML + "</select>";
+}
+
+function getColor(category)
+{
+	for(var i = 0; i < catColors.length; i++)
+	{
+		if(catColors[i].category == category)
+		{
+			return catColors[i].color;
+		}
+	}
 }
 
 function openForm()
@@ -146,6 +192,19 @@ function sortTable(column)
 	} //while
 }
 
+function updateCatColor(event)
+{
+	var row = event.target.parentNode.parentNode;
+	var cells = row.getElementsByClassName("data-cell");
+	var category = event.target.value;
+	var color = getColor(category);
+	for(var i = 0; i < cells.length; i++)
+	{
+		cells[i].style.backgroundColor = color;
+	}
+	updateStorage();
+}
+
 function updateSelects(newCat)
 {
 	var selects = document.getElementsByTagName("SELECT");
@@ -155,4 +214,10 @@ function updateSelects(newCat)
 		selects[i].options[selects[i].options.length] = new Option(newCat, newCat);
 	}
 	template.options[template.options.length] = new Option(newCat, newCat);
+}
+
+function updateStorage()
+{
+	var table = document.getElementById("to-do-list");
+	localStorage.setItem("tasks", table.innerHTML);
 }
