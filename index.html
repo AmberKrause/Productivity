@@ -29,7 +29,79 @@
 						<div>Task:</div>
 						<textarea id="task-field" class="task-input" rows="4" cols="50" maxlength="300"></textarea>
 						<div>Deadline:</div>
-						<input id="date-field" type="date"></input>
+						<div id="main">
+							<table id="calendar">
+								<tr>
+									<th id="prev-month">&larr;</th>
+									<th id="month" colspan="5">January</th>
+									<th id="next-month">&rarr;</th>
+								</tr>
+								<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+								</tr>
+								<tr>
+									<td id="cell_0.0" class="date"></td>
+									<td id="cell_0.1" class="date"></td>
+									<td id="cell_0.2" class="date"></td>
+									<td id="cell_0.3" class="date"></td>
+									<td id="cell_0.4" class="date"></td>
+									<td id="cell_0.5" class="date"></td>
+									<td id="cell_0.6" class="date"></td>
+								</tr>
+								<tr>
+									<td id="cell_1.0" class="date"></td>
+									<td id="cell_1.1" class="date"></td>
+									<td id="cell_1.2" class="date"></td>
+									<td id="cell_1.3" class="date"></td>
+									<td id="cell_1.4" class="date"></td>
+									<td id="cell_1.5" class="date"></td>
+									<td id="cell_1.6" class="date"></td>
+								</tr>
+								<tr>
+									<td id="cell_2.0" class="date"></td>
+									<td id="cell_2.1" class="date"></td>
+									<td id="cell_2.2" class="date"></td>
+									<td id="cell_2.3" class="date"></td>
+									<td id="cell_2.4" class="date"></td>
+									<td id="cell_2.5" class="date"></td>
+									<td id="cell_2.6" class="date"></td>
+								</tr>
+								<tr>
+									<td id="cell_3.0" class="date"></td>
+									<td id="cell_3.1" class="date"></td>
+									<td id="cell_3.2" class="date"></td>
+									<td id="cell_3.3" class="date"></td>
+									<td id="cell_3.4" class="date"></td>
+									<td id="cell_3.5" class="date"></td>
+									<td id="cell_3.6" class="date"></td>
+								</tr>
+								<tr>
+									<td id="cell_4.0" class="date"></td>
+									<td id="cell_4.1" class="date"></td>
+									<td id="cell_4.2" class="date"></td>
+									<td id="cell_4.3" class="date"></td>
+									<td id="cell_4.4" class="date"></td>
+									<td id="cell_4.5" class="date"></td>
+									<td id="cell_4.6" class="date"></td>
+								</tr>
+								<tr>
+									<td id="cell_5.0" class="date"></td>
+									<td id="cell_5.1" class="date"></td>
+									<td id="cell_5.2" class="date"></td>
+									<td id="cell_5.3" class="date"></td>
+									<td id="cell_5.4" class="date"></td>
+									<td id="cell_5.5" class="date"></td>
+									<td id="cell_5.6" class="date"></td>
+								</tr>
+							</table>
+						</div>
+						<input id="date-field" type="text"></input>
 						<button id="submit-task" type="button">OK</button>
 					</div>
 					<button id="add-button" type="button">+</button></td>

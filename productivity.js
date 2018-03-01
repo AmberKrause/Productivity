@@ -1,15 +1,27 @@
 window.onload = function()
 {
+	var selects = document.getElementsByTagName("SELECT");
 	var table = document.getElementById("to-do-list");
 	/*if(localStorage.tasks)
 	{
 		table.innerHTML = localStorage.getItem("tasks");
+	}
+	if(localStorage.selectValues)
+	{
+		var selVals = localStorage.getItem("selectValues");
+		for(i = 0; i < selects.length; i++)
+		{
+			selects[i].value = selVals[i];
+		}
 	}*/
 	
-	
+	var calCells = document.getElementsByClassName("date");
 	var catButton = document.getElementById("submit-cat");
+	var datePicker = document.getElementById("date-field");
 	var headers = document.getElementById("head-row").getElementsByTagName("TH");
+	var nextMonth = document.getElementById("next-month");
 	var plus = document.getElementById("add-button");
+	var prevMonth = document.getElementById("prev-month");
 	var submitTask = document.getElementById("submit-task");
 	plus.onclick = openForm;
 	submitTask.onclick = addTask;
@@ -24,7 +36,40 @@ window.onload = function()
 		}
 	})(i);
 	catButton.onclick = addCat;
+	datePicker.onclick = showCalendar;
+	nextMonth.onclick = function()
+	{
+		if(calendarInfo.month == 11)
+		{
+			updateCalendar(calendarInfo.year + 1, 0);
+		}
+		else
+		{
+			updateCalendar(calendarInfo.year, calendarInfo.month + 1);
+		}
+	}
+	prevMonth.onclick = function()
+	{
+		if(calendarInfo.month == 0)
+		{
+			updateCalendar(calendarInfo.year - 1, 11);
+		}
+		else
+		{
+			updateCalendar(calendarInfo.year, calendarInfo.month - 1);
+		}
+	}
+	for(i = 0; i < calCells.length; i++)
+	{
+		calCells[i].addEventListener("click", selectDate, false);
+	}
+	/*for(i = 0; i < selects.length; i++)
+	{
+		selects[i].onchange = updateSelectsStorage;
+	}*/
 }
+
+var calendarInfo = { year: "2018", month: "0"}
 
 var catColors = [
 	{ category: "Homework", color: "#7fcdf9" },
@@ -52,7 +97,6 @@ function addCat()
 		catColors.push(colorObj);
 		catInput.value = null;
 		updateSelects(newCat);
-		//updateStorage();
 	}
 }
 
@@ -114,8 +158,14 @@ function addTask()
 		deleteButton = deleteCell.childNodes[0];
 		deleteButton.addEventListener("click", deleteTask, false);
 		closeForm();
-		//updateStorage();
+		//updateTasksStorage();
 	}
+}
+
+function closeCalendar()
+{
+	var calendar = document.getElementById("calendar");
+	calendar.style.display = "none";
 }
 	
 function closeForm()
@@ -132,7 +182,7 @@ function deleteTask(event)
 	{
 		row.parentNode.removeChild(row);
 	}
-	//updateStorage();
+	//updateTasksStorage();
 }
 
 function getCatHTML()
@@ -155,6 +205,64 @@ function openForm()
 {
 	var inputForm = document.getElementById("input-form");
 	inputForm.style.display = "block";
+}
+
+function selectDate(event)
+{
+	var datePicker = document.getElementById("date-field");
+	var day = "0" + event.target.innerHTML;
+	var month = "0" + (calendarInfo.month + 1);
+	month = month.substring(month.length - 2);
+	day = day.substring(day.length - 2);
+	datePicker.value = (calendarInfo.year + "-" + month + "-" + day);
+	closeCalendar();
+}
+
+function showCalendar()
+{
+	var calendar = document.getElementById("calendar");
+	var now = new Date();
+	calendar.style.display = "block";
+	updateCalendar(now.getFullYear(), now.getMonth());
+}
+
+function updateCalendar(year, month)
+{
+	var cells = document.getElementsByClassName("date");
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var monthElem = document.getElementById("month");
+	var startOfMonth = new Date();
+	startOfMonth.setYear(year);
+	startOfMonth.setMonth(month);
+	startOfMonth.setDate("1");
+	var currentDate = startOfMonth;
+	var currentRow = 0;
+	var currentCol = startOfMonth.getDay();
+	var currentCell = document.getElementById("cell_" + currentRow + "." + currentCol);
+	calendarInfo.year = year;
+	calendarInfo.month = month;
+	monthElem.innerHTML = months[month];
+	//reset dates
+	for(var i = 0; i < cells.length; i++)
+	{
+		cells[i].innerHTML = "";
+	}
+	//populate dates
+	for(i = 1; currentDate.getMonth() == month; i++)
+	{
+		currentCell.innerHTML = i;
+		if(currentCol == 6)
+		{
+			currentRow++;
+			currentCol = 0;
+		}
+		else
+		{
+			currentCol++;
+		}
+		currentCell = document.getElementById("cell_" + currentRow + "." + currentCol);
+		currentDate.setDate(currentDate.getDate() + 1);
+	}
 }
 
 function sortTable(column)
@@ -207,7 +315,6 @@ function updateCatColor(event)
 	{
 		cells[i].style.backgroundColor = color;
 	}
-	//updateStorage();
 }
 
 function updateSelects(newCat)
@@ -220,9 +327,21 @@ function updateSelects(newCat)
 	}
 	template.options[template.options.length] = new Option(newCat, newCat);
 }
-
-function updateStorage()
+/*
+function updateTasksStorage()
 {
 	var table = document.getElementById("to-do-list");
 	localStorage.setItem("tasks", table.innerHTML);
+	updateSelectsStorage();
 }
+
+function updateSelectsStorage()
+{
+	var selects = document.getElementsByTagName("SELECT");
+	var values = new Array[selects.length];
+	for(var i = 0; i < selects.length; i++)
+	{
+		values[i] = selects[i].value;
+	}
+	localStorage.setItem("selectValues", values);
+}*/
