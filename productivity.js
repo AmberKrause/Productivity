@@ -125,11 +125,12 @@ function addTask()
 		var day;
 		var deleteButton;
 		
-		row.classList.add("data-row");
+		row.classList.add("task-row");
 		
 		cat.innerHTML = getCatHTML();
 		cat.childNodes[0].addEventListener("change", updateCatColor, false);
 		cat.classList.add("data-cell");
+		cat.classList.add("center-content");
 		
 		task.innerHTML = taskField.value;
 		taskField.value = "";
@@ -209,13 +210,16 @@ function openForm()
 
 function selectDate(event)
 {
-	var datePicker = document.getElementById("date-field");
-	var day = "0" + event.target.innerHTML;
-	var month = "0" + (calendarInfo.month + 1);
-	month = month.substring(month.length - 2);
-	day = day.substring(day.length - 2);
-	datePicker.value = (calendarInfo.year + "-" + month + "-" + day);
-	closeCalendar();
+	if(event.target.innerHTML.length > 0)
+	{
+		var datePicker = document.getElementById("date-field");
+		var day = "0" + event.target.innerHTML;
+		var month = "0" + (calendarInfo.month + 1);
+		month = month.substring(month.length - 2);
+		day = day.substring(day.length - 2);
+		datePicker.value = (calendarInfo.year + "-" + month + "-" + day);
+		closeCalendar();
+	}
 }
 
 function showCalendar()
@@ -271,21 +275,32 @@ function sortTable(column)
 	console.log(column);
 	var swapping = true;//continue swapping
 	var table = document.getElementById("to-do-list");
-	var rows = table.getElementsByTagName("TR");
+	var rows = table.getElementsByClassName("task-row");
 	var dataX;
 	var dataY;
 	while(swapping)
 	{
 		//use bubble sort until no swaps
 		swapping = false;
-		for(var i = 1; i < (rows.length - 2); i++)
+		for(i = 0; i < rows.length - 1; i++)
 		{
+			console.log("checking row " + i);
 			dataX = rows[i].getElementsByTagName("TD")[column];
 			dataY = rows[i + 1].getElementsByTagName("TD")[column];
 			if(column == 0)
 			{
 				//special case for category
 				if(dataX.childNodes[0].value > dataY.childNodes[0].value)
+				{
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					swapping = true;
+					break;
+				} //if
+			}
+			else if(column == 4)
+			{
+				//special case for complete
+				if(dataX.childNodes[0].checked > dataY.childNodes[0].checked)
 				{
 					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 					swapping = true;
