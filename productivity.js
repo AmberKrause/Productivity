@@ -2,19 +2,6 @@ window.onload = function()
 {
 	var selects = document.getElementsByTagName("SELECT");
 	var table = document.getElementById("to-do-list");
-	/*if(localStorage.tasks)
-	{
-		table.innerHTML = localStorage.getItem("tasks");
-	}
-	if(localStorage.selectValues)
-	{
-		var selVals = localStorage.getItem("selectValues");
-		for(i = 0; i < selects.length; i++)
-		{
-			selects[i].value = selVals[i];
-		}
-	}*/
-	
 	var calCells = document.getElementsByClassName("date");
 	var catButton = document.getElementById("submit-cat");
 	var datePicker = document.getElementById("date-field");
@@ -63,10 +50,6 @@ window.onload = function()
 	{
 		calCells[i].addEventListener("click", selectDate, false);
 	}
-	/*for(i = 0; i < selects.length; i++)
-	{
-		selects[i].onchange = updateSelectsStorage;
-	}*/
 }
 
 var calendarInfo = { year: "2018", month: "0"}
@@ -159,7 +142,6 @@ function addTask()
 		deleteButton = deleteCell.childNodes[0];
 		deleteButton.addEventListener("click", deleteTask, false);
 		closeForm();
-		//updateTasksStorage();
 	}
 }
 
@@ -183,7 +165,6 @@ function deleteTask(event)
 	{
 		row.parentNode.removeChild(row);
 	}
-	//updateTasksStorage();
 }
 
 function getCatHTML()
@@ -342,21 +323,3 @@ function updateSelects(newCat)
 	}
 	template.options[template.options.length] = new Option(newCat, newCat);
 }
-/*
-function updateTasksStorage()
-{
-	var table = document.getElementById("to-do-list");
-	localStorage.setItem("tasks", table.innerHTML);
-	updateSelectsStorage();
-}
-
-function updateSelectsStorage()
-{
-	var selects = document.getElementsByTagName("SELECT");
-	var values = new Array[selects.length];
-	for(var i = 0; i < selects.length; i++)
-	{
-		values[i] = selects[i].value;
-	}
-	localStorage.setItem("selectValues", values);
-}*/

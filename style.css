@@ -1,6 +1,8 @@
-body
+html, body
 {
 	font-family: Ariel, sans-serif;
+	height: 100%;
+	width: 100%;
 }
 
 button, select
@@ -94,8 +96,16 @@ th
 {
 	position: absolute;
 	opacity: 0;
+	height: 60vh;
+	width: 90vh;
 	-o-transition: opacity 1s ease-in-out;
 	transition: opacity 1s ease-in-out;
+}
+
+.slide-img
+{
+	width: 100%;
+	max-width: 100%;
 }
 
 .small-col
@@ -191,8 +201,10 @@ th
 {
 	border: 5px solid white;
 	clear: both;
-	height: 427px;
-	width: 640px;
+	/*height: 427px;
+	width: 640px;*/
+	height: 60vh;
+	width: 90vh;
 	margin-left: auto;
 	margin-right: auto;
 }
